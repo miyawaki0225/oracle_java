@@ -65,6 +65,11 @@
   - アトミック変数
   - パラレルストリーム
   
+  ```Java
+  LinkedBlockingQueue
+  ConcurrentHashMap
+  CopyOnWriteArrayList
+  ```
 
 ## chapter9 入出力（基本とNIO.2）
   - 入出力用のパッケージ
