@@ -33,6 +33,8 @@ String s = "\uFE64" + "script" + "\uFE65";
 s = Normalizer.normalize(s, Form.NFKC);
 ```
 - IDS02-J	パス名は検証する前に正規化する
+1. 「.」はカレントディレクトリ自身を表す
+2. 「..」は親ディレクトリを表す
 - IDS03-J	ユーザ入力を無害化せずにログに保存しない
 - IDS04-J	ZipInputStream からファイルを安全に展開する
 - IDS05-J	ファイル名やファイルパスにはASCII文字セットの一部の文字のみを使用する
