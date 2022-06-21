@@ -44,6 +44,7 @@
 
 ## 引数や戻り値の型にint型を使用する関数型インターフェース
 |インターフェース名|抽象メソッド|
+|---|---|
 |IntFunction\<R>|R apply(int value)|
 |IntConsumer|void accept(int value)|
 |IntPredicate|boolean test(int value)|
