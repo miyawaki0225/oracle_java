@@ -29,6 +29,18 @@ IntStream = IntStream.rangeClosed(1,10); //1-10
 
 ```
 
+## 中間操作
+|メソッド名|説明|
+|---|---|
+|filter||
+|distinct||
+|limit||
+|skip||
+|map||
+|flatMap||
+|sorted||
+|peek||
+
 ## 終端操作
 - 一つのStreamオブジェクトに対して、終端操作は1度きり
 
@@ -55,3 +67,28 @@ IntStream = IntStream.rangeClosed(1,10); //1-10
 >どっちかというと総和や総乗のようなイメージです(というか、総和や総乗がリダクションの一種です)。
 >リダクション操作には、1つの値を返すリダクションと値を複数含むコンテナ(Collectionなど)を返す可変リダクションがあります。
 
+## Optionalクラス
+|戻り値|メソッド名|説明|
+|---|---|---|
+|Optional\<T>|empty()||
+|Optional\<T>|of(T value)||
+||get()||
+|boolean|isPresent()||
+|boolean|isEmpty()||
+|void|ifPresent||
+|T|orElse(T other)||
+|T|orElseGet()||
+|T|orElseThrow()||
+
+## Collectorsクラス
+toList(),joining(),summingInt(),averagingInt()メソッド
+
+toSet(),toMap()メソッド
+
+groupingBy()メソッド >> Function型
+
+partitioningBy()メソッド >> Predicate型なので、戻り値Boolean
+
+mapping()メソッド
+
+maxBy(),minBy()メソッド
