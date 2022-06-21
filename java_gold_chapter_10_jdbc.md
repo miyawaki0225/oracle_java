@@ -1,4 +1,4 @@
-# JDBC
+# chapter10_JDBC
 
 ```SQL:department
 CREATE DATABASE department;
