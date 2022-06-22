@@ -24,11 +24,21 @@
 
 ### @SuppressWarnings
 - 引数必須
-|||
+
+|値|説明|
 |---|---|
 |unchecked|型の使用に関連する警告を抑制する|
 |deprecation|@Deprecatedアノテーションがつけられたタイプまたはメソッドに関連する警告を抑制する|
-|||
+
+例
+```java
+@SuppressWarnings(value={"unchecked"})
+@SuppressWarnings(value={"unchecked","deprecation"}
+@SuppressWarnings("unchecked")
+@SuppressWarnings({"unchecked"})
+@SuppressWarnings({"unchecked","desprecation"})
+```
+
 
 ### @SafeVarargs
 `@SafeVarargs`を付けるメソッドは、`final`、`static`、`private`のいずれかである必要がある。
@@ -73,3 +83,12 @@ ElementTypeの列挙型の定数
 
 ### @Repeatable
 複数回使用可能となるアノテーション自体の定義。
+
+### アノテーションのアノテート
+
+|アノテーション|説明|
+|@Documented|Javadoc APIドキュメントの出力にも反映するようになる|
+|@Target|アノテーションを付与する要素を限定する|
+|@Retention|アノテーションをソースコードもしくはクラスファイルまで保持するかなどを制御する|
+|@Inherited|サブクラスにアノテーションを引き継ぐことを示す|
+|@Repeatable|同じ場所に複数回適用する|
