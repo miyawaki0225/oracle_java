@@ -16,12 +16,14 @@
 - 単一の抽象メソッドを持つインターフェースとする
 - staticメソッドやデフォルトメソッドは定義可能
 - java.lang.Objectクラスのpublicメソッドは抽象メソッドとしての宣言は可能
+- equals(Object obj),hashCode(),toString()の3つはデフォルトメソッドとして定義できない
 - 関数型インターフェースとして明示する場合は、@FunctionalInterfaceを付与する
 
 ### @Deprecated
+非推奨。
 
 ### @SuppressWarnings
-
+- 引数必須
 |||
 |---|---|
 |unchecked|型の使用に関連する警告を抑制する|
@@ -40,3 +42,34 @@
 - アノテーション型
 - 上記の型の一次元配列
 
+### @Target
+
+ElementTypeの列挙型の定数
+|定数|適用場所|
+|---|---|
+|TYPE||
+|FIELD||
+|METHOD||
+|PARAMETER||
+|CONSTRUCTOR||
+|LOCAL_VARIABLE||
+|ANNOTATION_TYPE||
+|PACKAGE||
+|TYPE_PARAMETER||
+|TYPE_USE||
+|MODULE||
+
+### @Retention
+アノテーションをソースコードまで存在させるか確認。
+
+|定数|適用場所|
+|---|---|
+|SOURCE|アノテーションはコンパイラによって破棄される|
+|CLASS|アノテーションはコンパイラによってクラスファイルに記録されるが、実行時にVMによって無視される。デフォルトの動作である。|
+|RUNTIME|アノテーションはコンパイラによってクラスファイルに記録され、実行時にVMによって読み取られる。|
+
+### @Inherited
+スーパークラスからアノテーションを継承させる。
+
+### @Repeatable
+複数回使用可能となるアノテーション自体の定義。
