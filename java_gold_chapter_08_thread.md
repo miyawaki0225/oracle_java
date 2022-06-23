@@ -227,10 +227,10 @@ CyclicBarrierクラスのコンストラクタと主なメソッド
   
 |メソッド名|説明|
 |---|---|
-|Stream\<E> parallelStream()|\<span style="color: red; ">Collection\</span>インターフェースで提供|
-|S parallel()|\<span style="color: red; ">BaseStream\</span>インターフェースで提供、ストリームをソースとしてパラレルストリームを返す。|
-|boolean isParallel()|\<span style="color: red; ">Base\</span>インターフェースで提供、パラレルストリームであればtrueを返す。|
-|S sequential()|\<span style="color: red; ">BaseStream\</span>インターフェースで提供、シーケンシャルストリームを返す。|
+|Stream\<E> parallelStream()|Collectionインターフェースで提供|
+|S parallel()|BaseStreamインターフェースで提供、ストリームをソースとしてパラレルストリームを返す。|
+|boolean isParallel()|Baseインターフェースで提供、パラレルストリームであればtrueを返す。|
+|S sequential()|BaseStreamインターフェースで提供、シーケンシャルストリームを返す。|
   
 ### パラレル処理でのパイプライン
   
