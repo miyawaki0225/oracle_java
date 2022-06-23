@@ -152,7 +152,7 @@ FileWriter(String fileName, boolean append) throws IOException
 ```java
 %[インデックス$][フラグ][幅][.精度]変換の種類
 ```
-
+|||
 |---|---|
 |インデックス|%の後に、数字$を記述すると置換引数を明示的に指定可能|
 |フラグ|+ 符号を出力|
@@ -188,7 +188,7 @@ Path path3 =
 
 ### Pathインターフェースの主なメソッド
 |戻り値|メソッド名|説明|
-|---|---|---|---|
+|---|---|---|
 |String |toString()                           ||
 |Path   |getFileName()                        |このパスが示すファイルまたはディレクトリの名前をPathオブジェクトとして返す。|
 |Path   |getName(int index)                   ||
