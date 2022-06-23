@@ -71,8 +71,9 @@ for (Integer key : map.keySet()) {
 並列処理のための主なパッケージ
 - java.util.concurrent
 - java.util.concurrent.atomic
-
+  
 |メソッド名|説明|
+|---|---|
 |synchronizedCollection(Collection\<T>c)||
 |synchronizedSet(Set\<T>s)||
 |synchronizedSortedSet(SortedSet\<T>s||
@@ -81,7 +82,7 @@ for (Integer key : map.keySet()) {
 |synchronizedList(List\<T>list)||
 |synchronizedMap(Map\<K,V>m)||
 |synchronizedNavigableMap(NavigableMap<K,V>m)||
-
+  
 ## Queueインターフェースの拡張
 
 |インターフェース／クラス名|説明|
@@ -90,32 +91,32 @@ for (Integer key : map.keySet()) {
 |SynchronousQueue   ||
 |LinkedBlockingQueue||
 |ArrayBlockingQueue ||
-
+  
 BlockingQueueインターフェースの主なメソッド
 ||例外のスロー|特殊な値|ブロック|タイムアウト|
 |---|---|---|---|---|
 |挿入|add(e)|offer(e)|put(e)|offer(e,time,unit)|
 |削除|remove()|poll()|take()|poll(time,unit)|
 |検査|element()|peek()|適用外|適用外|
-
+  
 BlockingDequeインターフェースの主なメソッド（最初の要素）
 ||例外のスロー|特殊な値|ブロック|タイムアウト|
 |---|---|---|---|---|
 |挿入|addFirst(e)|offerFirst(e)|putFirst(e)|offerFirst(e,time,unit)|
 |削除|removeFirst()|pollFirst()|takeFirst()|pollFirst(time,unit)|
 |検査|getFirst()|peekFirst()|適用外|適用外|
-
+  
 BlockingDequeインターフェースの主なメソッド（最後の要素）
 ||例外のスロー|特殊な値|ブロック|タイムアウト|
 |---|---|---|---|---|
 |挿入|addLast(e)|offerLast(e)|putLast(e)|offerLast(e,time,unit)|
 |削除|removeLast()|pollLast()|takeLast()|pollLast(time,unit)|
 |検査|getLast()|peekLast()|適用外|適用外|
-
+  
 `queue` ← `Deque`,`BlockingQueue` ← `BlockingDequeu` ← "LinkedBlockingDeque"  
-
+  
 ## Mapインターフェースの拡張
-
+  
 concurrentMapインターフェース
 |メソッド名|説明|
 |---|---|
@@ -123,21 +124,21 @@ concurrentMapインターフェース
 |remove(Object key,Object value)||
 |replace(K key, V value)||
 |replace(K key,V oldValue, V new Value)||
-
+  
 putIfAbsent()メソッドは1回のロック内で処理を実行し、別スレッドからの割り込みが入らないことを保証。
-
+  
 ## ArrayListクラスとSetインターフェースの拡張
-
+  
 各々新しいオブジェクトを作成して、スレッドセーフを実現する。
 |クラス名|説明|
 |---|---|
 |CopyOnWriteArrayList||
 |CopyOnWriteArraySet||
-
+  
 ## Executorフレームワーク
 ### ExecutorServiceを使用したタスクの実行
 スレッドの再利用やスケジューリングを行うスレッドコードを簡単に実装出来る。
-
+  
 ### Executorフレームワークの主なインターフェースとクラス
 |インターフェース|説明|
 |---|---|
@@ -146,7 +147,7 @@ putIfAbsent()メソッドは1回のロック内で処理を実行し、別スレ
 |Future|非同期計算の結果を表す。|
 |Callable|タスクを行うクラス。結果を返すメソッドを提供。|
 |Executors||
-
+  
 ### Executorsクラスの主なメソッド
 |戻り値|メソッド名|説明|
 |---|---|---|
@@ -157,7 +158,6 @@ putIfAbsent()メソッドは1回のロック内で処理を実行し、別スレ
 |ScheduledExecutorService|newScheduledThreadPool(int corePoolSize)|周期的にコマンドの実行をスケジュールできるスレッドプールを作成する。|
 |Callable\<Object>|callable(Runnable task)|呼び出し時に、指定されたタスクを実行し、nullを返すCallableオブジェクトを返す。|
 |Callable\<T>|callable(Runnable task, T result)||
-  
   
 ### ExecutorServiceの主なメソッド
 |戻り値|メソッド名|説明|
@@ -172,7 +172,7 @@ putIfAbsent()メソッドは1回のロック内で処理を実行し、別スレ
 |\<T>Future\<T>|submit(Runnable task, T result)||
 |void execute(Runnable command)|指定されたタスクを実行する|
 ※executeは`Executor`インターフェースのメソッド
-
+  
 ### Futureインターフェースの主なメソッド
 |戻り値|メソッド名|説明|
 |---|---|---|
@@ -181,9 +181,9 @@ putIfAbsent()メソッドは1回のロック内で処理を実行し、別スレ
 |boolean|isDone()|このタスクが完了した場合はtrueを返す。|
 ||V get(long timeout, TimeUnit unit)|必要に応じてタスクが完了するまで待機し、その後、タスク結果を取得する。|
 ||V get(long timeout, TimeUnit unit)|必要に応じて、最大で指定された時間及び計算が完了するまで待機し、その後タスク結果を取得する。|
-
+  
 ### Callabeインターフェース
-
+  
 - Runnableインターフェースのrun()メソッドは、戻り値が`void`
 - java.util.concurrent.Callableインターフェースは戻り値がオブジェクト
 - call()メソッドにタスクを実装
@@ -191,25 +191,25 @@ putIfAbsent()メソッドは1回のロック内で処理を実行し、別スレ
 |メソッド名|説明|
 |---|---|
 |V call() throws Exception|タスクを実行し結果を返す。タスクが実行できない場合は例外をスローする。|
-
+  
 ### スレッドプール
-
+  
 CyclicBarrierクラスのコンストラクタと主なメソッド
 |コンストラクタ／メソッド|説明|
 |---|---|
 |CyclicBarrire(int parties)|引数で指定された数分のスレッドが待機状態になると、バリアポイントを通過する。|
 |CyclicBarrier(int parties,Runnable barrierAction)|バリアポイントを通過する際に、第2引数で指定されたバリアアクションを実行する。|
 |int await()|バリアポイントに指定された数のスレッドが到着するまで待機する。|
-
+  
 ## アトミック変数
-
+  
 |クラス名|説明|
 |---|---|
 |AtomicBoolean||
 |AtomicInteger||
 |AtomicLong||
 |AtomicReference|アトミックに操作する参照型のクラス|
-
+  
 ### AtomicIntegerクラスの主なメソッド
 |クラス名|説明|
 |---|---|
@@ -218,23 +218,23 @@ CyclicBarrierクラスのコンストラクタと主なメソッド
 |int increamentAndGet()				|アトミックにインクリメントし、更新値を返す。|
 |int get()					|現在の値を取得する。|
 |int getAndIncrement()				|アトミックにインクリメントし、更新前の値を返す。|
-
+  
 ### パラレルストリーム
-
+  
 - 逐次処理（シーケンシャル）
 - 並行処理（パラレルストリーム
-
+  
 |メソッド名|説明|
 |---|---|
 |Stream\<E> parallelStream()|<span style="color: red; ">Collection</span>インターフェースで提供|
 |S parallel()|<span style="color: red; ">BaseStream</span>インターフェースで提供、ストリームをソースとしてパラレルストリームを返す。|
 |boolean isParallel()|<span style="color: red; ">Base</span>インターフェースで提供、パラレルストリームであればtrueを返す。|
 |S sequential()|<span style="color: red; ">BaseStream</span>インターフェースで提供、シーケンシャルストリームを返す。|
-
+  
 ### パラレル処理でのパイプライン
-
+  
 ### findAny(),findFirst(),reduce(),collect(),groupingByConcurrent(),toConcurrentMap()
-
+  
 ## groupingByConcurrent()メソッドとtoConcurrentMap()メソッド
 |メソッド名|説明|
 |---|---|
