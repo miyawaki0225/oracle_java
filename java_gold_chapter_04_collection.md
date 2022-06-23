@@ -32,6 +32,7 @@
 ### Mapインターフェースの主なメソッド
 
 |戻り値|メソッド名|説明|
+|---|---|---|
 |void|clear()||
 |boolean|containsKey(Object key)||
 |boolean|containsValue(Object vale)||
