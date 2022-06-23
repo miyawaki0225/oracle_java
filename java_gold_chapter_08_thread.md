@@ -171,6 +171,7 @@ putIfAbsent()メソッドは1回のロック内で処理を実行し、別スレ
 |Future\<?>|submit(Runnable task)||
 |\<T>Future\<T>|submit(Runnable task, T result)||
 |void execute(Runnable command)|指定されたタスクを実行する|
+
 ※executeは`Executor`インターフェースのメソッド
   
 ### Futureインターフェースの主なメソッド
@@ -226,15 +227,21 @@ CyclicBarrierクラスのコンストラクタと主なメソッド
   
 |メソッド名|説明|
 |---|---|
-|Stream\<E> parallelStream()|<span style="color: red; ">Collection</span>インターフェースで提供|
-|S parallel()|<span style="color: red; ">BaseStream</span>インターフェースで提供、ストリームをソースとしてパラレルストリームを返す。|
-|boolean isParallel()|<span style="color: red; ">Base</span>インターフェースで提供、パラレルストリームであればtrueを返す。|
-|S sequential()|<span style="color: red; ">BaseStream</span>インターフェースで提供、シーケンシャルストリームを返す。|
+|Stream\<E> parallelStream()|\<span style="color: red; ">Collection\</span>インターフェースで提供|
+|S parallel()|\<span style="color: red; ">BaseStream\</span>インターフェースで提供、ストリームをソースとしてパラレルストリームを返す。|
+|boolean isParallel()|\<span style="color: red; ">Base\</span>インターフェースで提供、パラレルストリームであればtrueを返す。|
+|S sequential()|\<span style="color: red; ">BaseStream\</span>インターフェースで提供、シーケンシャルストリームを返す。|
   
 ### パラレル処理でのパイプライン
   
-### findAny(),findFirst(),reduce(),collect(),groupingByConcurrent(),toConcurrentMap()
-  
+#### findAny()
+#### findFirst()
+#### reduce()
+#### collect()
+
+#### groupingByConcurrent()、toConcurrentMap()
+  パラレルストリームでのみ使える。
+
 ## groupingByConcurrent()メソッドとtoConcurrentMap()メソッド
 |メソッド名|説明|
 |---|---|
