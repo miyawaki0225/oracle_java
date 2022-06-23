@@ -201,3 +201,42 @@ CyclicBarrierクラスのコンストラクタと主なメソッド
 |CyclicBarrier(int parties,Runnable barrierAction)|バリアポイントを通過する際に、第2引数で指定されたバリアアクションを実行する。|
 |int await()|バリアポイントに指定された数のスレッドが到着するまで待機する。|
 
+## アトミック変数
+
+|クラス名|説明|
+|---|---|
+|AtomicBoolean||
+|AtomicInteger||
+|AtomicLong||
+|AtomicReference|アトミックに操作する参照型のクラス|
+
+### AtomicIntegerクラスの主なメソッド
+|クラス名|説明|
+|---|---|
+|int addAndGet(int delta)			|アトミックに指定された値を現在の値に追加する。戻り値は、増分後の値。|
+|boolean compareAndSet(int expect,int update)	|現在の値が第１引数と等しい場合、アトミックに第2引数で指定された値に更新する。|
+|int increamentAndGet()				|アトミックにインクリメントし、更新値を返す。|
+|int get()					|現在の値を取得する。|
+|int getAndIncrement()				|アトミックにインクリメントし、更新前の値を返す。|
+
+### パラレルストリーム
+
+- 逐次処理（シーケンシャル）
+- 並行処理（パラレルストリーム
+
+|メソッド名|説明|
+|---|---|
+|Stream\<E> parallelStream()|Collectionインターフェースで提供|
+|S parallel()|BaseStreamインターフェースで提供、ストリームをソースとしてパラレルストリームを返す。|
+|boolean isParallel()|Baseインターフェースで提供、パラレルストリームであればtrueを返す。|
+|S sequential()|BaseStreamインターフェースで提供、シーケンシャルストリームを返す。|
+
+### パラレル処理でのパイプライン
+
+### findAny(),findFirst(),reduce(),collect(),groupingByConcurrent(),toConcurrentMap()
+
+## groupingByConcurrent()メソッドとtoConcurrentMap()メソッド
+|メソッド名|説明|
+|---|---|
+||ConcurrentMapに格納して返す並行Collectorを返す|
+||ConcurrentMapに蓄積する平行Collector|
