@@ -28,6 +28,13 @@ public class Main {
 	}
 }
 ```
+```java
+Locale aLocale = new Locale.Builder()
+				.setLanguage("sr")
+				.setScript("Latn")
+				.setRegion("RS")
+				.build();
+```
 
 ## リソースバンドル
 アプリのユーザーインターフェースのロケールによって表示を自動的に切り替える。  
@@ -41,11 +48,25 @@ public class Main {
 |---|---|
 |ListResourceBuncel|リソースバンドルをリソースのリストとして管理するクラス|
 |PropertyResourceBundle|リソースバンドルをプロパティファイルで管理するクラス|
+※同一アプリケーション内に混在可能
 
 命名ルール
 - MyResources:規定名のみの場合は、デフォルトロケールの場合に読み込まれる。
 - MyResources_en:規定名と言語コードを「\_」でつなぐ。言語コードを指定したロケールの場合に読み込まれる。
 - MyResources_en_US:規定名と言語コード、国コードを「\_」でつなぐ。言語コード及び国コードを指定した場合読み込まれる。
 
+
+```java
+//Object[][]をオーバーライドする
+public class MyResources_en_US extends ListResourceBundle {
+	@Override
+	protected Object[][] getContents() {
+		Object[][] contents = { { "send", "send" }, { "cancel", "cancel" } };
+		return contents;
+	}
+}
+```
+
+- プロパティファイルを読み込ませる場合、デフォルトだと「src」の直下にある。
 
 ## フォーマット
