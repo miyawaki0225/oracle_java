@@ -23,6 +23,28 @@
 - uses  
 - opens 
 
+module-info.javaの設定例
+※関節エクスポートされていてもモジュールパスを指定する必要がある。
+```java
+//module_main/module-info.java
+module module_main {
+	requires module_sub;
+}
+
+//module_sub/module-info.java
+module module_sub {
+	exports module_sub.main;
+	requires transitive module_3rd;
+}
+
+//module_3rd/module-info.java
+module module_3rd {
+	exports module_3rd.main;
+}
+```
+
+
+
 - すべてのモジュール宣言で「requires java.base;」が暗黙的に行われているので省略できる。
 
 javac、javaコマンドのモジュールに関するオプション
