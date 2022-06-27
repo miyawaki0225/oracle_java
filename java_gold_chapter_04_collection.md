@@ -20,10 +20,10 @@
 |boolean    |add(E e)||
 |void       |clear()||
 |boolean    |contains(Object obj)||
-|boolean    |containsAll(Collection\<?>c||
+|boolean    |containsAll(Collection\<?>c)||
 |boolean    |isEmpty()||
 |boolean    |remove(Object o)||
-|boolean    |removeAll(Collection\<?>c||
+|boolean    |removeAll(Collection\<?>c)||
 |Iterator\<E>|iterator()||
 |Object[]   |toArray()||
 |\<T> T[]    |toArray(T[] array)||
@@ -37,7 +37,9 @@
 |boolean|containsKey(Object key)||
 |boolean|containsValue(Object vale)||
 |V|get(Object key)||
-|void|putAll()||
+|boolean|isEmpty()||
+|V|put(K key,V value)||
+|void|putAll(Map\<? extends K,? extends V>m)||
 |V|remove(Object key)||
 |int|size()||
 |Collection\<V>|values()||
@@ -66,26 +68,23 @@
 
 
 ### Queueインターフェースの主なメソッド
-
 |操作|戻り値|メソッド名|例外|
 |---|---|---|---|
-|挿入|boolean|add(E e)||
-||boolean|offer(E e)||
-|削除|E|remove()||
-||E|poll()||
+|挿入|boolean|add(E e)|IllegalStateException|
+||boolean|offer(E e)|false|
+|削除|E|remove()|NoSuchElementException|
+||E|poll()|null|
 |検査|E|element()|NoSuchElementExeption|
 ||E|peek|null|
 
 
 ### Dequeインターフェースの主なメソッド
-
-  
 先頭操作用メソッド
 |操作|例外のスロー|特殊な値|説明|
 |---|---|---|---|
 |挿入|void addFirst(E e)  |boolean offerFirst(E e)|指定された要素を先頭に挿入する|
-|削除|E removeFirst()     |E pollFirst()|キューの先頭を取得及び削除する|
-|検査|E getFirst()        |E peekFirst()|キューの先頭を取得するが削除しない|
+|削除|E removeFirst()     |E pollFirst()		|キューの先頭を取得及び削除する|
+|検査|E getFirst()        |E peekFirst()		|キューの先頭を取得するが削除しない|
 
 末尾操作用メソッド
 |操作|例外のスロー|特殊な値|説明|
@@ -98,6 +97,13 @@
 NavigableMap:「指定されたキーに対し、もっとも近い要素を返す。」
 - higherKey()
 - lowerKey()
+
+## 従来型とジェネリックス型
+- ジェネリックスを用いた独自クラスの定義
+	- 型パラメータで扱えるデータ型は、参照型のみです。
+
+- ジェネリックスを用いたメソッド定義
+	- 型パラメータリストの有効範囲は、そのメソッド内のみ
 
 ### ジェネリクスを用いたインターフェース宣言
 ```java
@@ -120,27 +126,24 @@ Map<Integer, ?> map = method();
 ```
 
 ### ComparableとComparatorインターフェース
-
 ```java
-//Comparableインターフェース
+//Comparableインターフェースには、compareTo()メソッドのみ
 //java.langパッケージ
 public int compareTo(T o)
 
-//Comparatorインターフェース
+//Comparatorインターフェースには、compare()およびequals()メソッド
 //java.utilパッケージ
-public int compare(T o1,T o2)
+public int compare(T o1, T o2)
 ```
 
 ### Comparatorインターフェースの主なメソッド
-
-|メソッド|説明|
-|---|---|
-|naturalOrder()||
-|reverseOrder()||
-|nullsFirst()|nullを含めた比較を行う。nullは先頭になる。|
-|nullsLast()|nullを含めた比較を行う。nullは末尾になる。|
-|reversed()|Comparatorの逆順を義務付ける|
-
+|戻り値|メソッド|説明|
+|---|---|---|
+|Comparator\<T>|naturalOrder()|自然順序で比較するComparatorを返す|
+|static\<T> Comparator\<T>|reverseOrder()|自然順序の逆で比較するComparatorを返す|
+|static\<T> Comparator\<T>|nullsFirst()|nullを含めた比較を行う。nullは先頭になる|
+|static\<T> Comparator\<T>|nullsLast()|nullを含めた比較を行う。nullは末尾になる|
+|default Comparator\<T>|reversed()|Comparatorの逆順を義務付ける|
 
 ```java
 Random rnd = new Random();
@@ -154,6 +157,21 @@ System.out.println();
 Collections.sort(list,Comparator.naturalOrder());
 list.forEach(i->System.out.printf("%d ", i));
 ```
+
+Collectionsクラス
+- Collectionsクラス
+|戻り値|メソッド|説明|
+|---|---|---|
+|void|sort(List\<T>list)|指定されたリストを昇順にソート|
+|void|sort(list,Comparator\<? super T>C)|指定されたコンパレータが示す順序に従ってソートする。第2引数にnullが指定されると自然順序になる。|
+|void|reverse(List\<?>list|指定されたリストの要素の順序を逆にする|
+
+- Arraysクラス
+|戻り値|メソッド|説明|
+|---|---|---|
+|List\<T>|asList(T...a)|※要素の追加や削除は不可。上書きは可能|
+|void|sort(Object[] a||
+|void|sort(T[] a, Comparator\<? super T> c||
 
 ### ファクトリメソッド
 List,Set,Mapの各インターフェースにstaticメソッドとしてof()メソッドが提供。
