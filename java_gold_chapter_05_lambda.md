@@ -124,7 +124,7 @@ interface SampleBaseRambda {
 java.util.collectionインターフェースの実装例
 
 ```java
-List\<String>list=Arrays.asList("A","B","C","D");
+List<String>list=Arrays.asList("A","B","C","D");
 Stream<String>stream = list.stream();
 ```
 
