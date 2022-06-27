@@ -27,6 +27,7 @@
 ||SQLException||
 
 |メソッド名|説明|
+|---|---|
 |void printStackTrace()|エラートレースを出力する|
 |String getMessage()|エラーメッセージを取得する|
 
@@ -39,11 +40,22 @@
 - RuntimeExceptionおよびRuntimeExceptionのサブクラスの例外は、スーパークラスのメソッドに関係なくスロー出来る。
 - スーパークラスのメソッドにthrowsがあっても、サブクラス側でthrowsを記述しないことは可能
 
+#### try-with-resources
+- java.lang.AtutoCloseable
+- java.io.Closeableインタフェース
+
+|インタフェース|メソッド名|説明|
+|---|---|---|
+|java.lang.AutoCloseable|void close() throws Exception|このリソースを閉じ、ベースとなるリソースをすべて開放する|
+|java.io.Closeable|void close() throws IOException|このストリームを閉じて、それに関連するすべてのシステムリソースを開放する|
+
 
 #### 例外処理の順番
 読み込み >> close >> finally
 
 #### アサーション
+AssertionErrorクラスはErrorクラスのサブクラスです。
+
 ```java
 -ea：「」
 -da：「明示的に無効を指定」
