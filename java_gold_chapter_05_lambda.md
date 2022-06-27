@@ -42,6 +42,11 @@
 - returnを記述した場合末尾に「；」が必要
 - returnを省略した場合「｛｝」も省略する必要がある
 
+- メソッド参照
+- staticメソッド参照
+- インスタンスメソッド参照
+- コンストラクタ参照（クラス名::）
+
 ## 引数や戻り値の型にint型を使用する関数型インターフェース
 |インターフェース名|抽象メソッド|
 |---|---|
@@ -78,11 +83,11 @@
 
 |メソッド名|説明|メソッドを提供している主なインターフェース|
 |---|---|---|
-|andThen|Consumer andThen (Consumer after)||
-|compose|Function compose(Function before)||
-|and|Predicate and(Predicate other)||
-|or|Predicate or (Predicate other)||
-|negate|Predicate negate()||
+|andThen|Consumer andThen (Consumer after)  ||
+|compose|Function compose(Function before)  ||
+|and    |Predicate and(Predicate other)     ||
+|or     |Predicate or (Predicate other)     ||
+|negate |Predicate negate()                 ||
 ※negate()⇒反転
 
 Streamの基本の流れ
@@ -108,7 +113,7 @@ interface SampleBaseRambda {
 
 ### Stream Object
 
-- Stream<T>
+- Stream\<T>
 - IntStream
 - LongStream
 - DoubleStream
@@ -119,7 +124,7 @@ interface SampleBaseRambda {
 java.util.collectionインターフェースの実装例
 
 ```java
-List<String>list=Arrays.asList("A","B","C","D");
+List\<String>list=Arrays.asList("A","B","C","D");
 Stream<String>stream = list.stream();
 ```
 
@@ -134,27 +139,24 @@ IntStream stream = Arrays.stream(arr);
 IntStream stream = IntStream.of(1,2,3);
 ```
 
-
-
-
 関数型インターフェースは43種類。
 しかし、メインは7つで残りは派生ver
 
-- Supplier<T>
+- Supplier\<T>
   - `「T get()」`
   - 主なメソッド：generate,
   - 派生：Boolean～,Int～,Long～,Double～
-- Consumer<T>
-  - `「void accept(T t」`
+- Consumer\<T>
+  - `「void accept(T t)」`
   - 主なメソッド：peek,forEach
   - 派生：Int～、Long～、Double～
-  - 特殊：BiConsumer<T,U>
+  - 特殊：BiConsumer\<T,U>
   - 参照：ObjInt～、ObjLong～、ObjDouble～
-- Predicate<T>
+- Predicate\<T>
   - 「boolean test(T t)」
   - 主なメソッド：allMatch,anyMatch,noneMatch
-  - 特殊：Int～、Long～、Double～、BiPredicate<T,U>
-- Function<T,R>
+  - 特殊：Int～、Long～、Double～、BiPredicate\<T,U>
+- Function\<T,R>
   - 「R apply(T t)」
   - 主なメソッド：map,flatMap
   - プリミティブ型→参照型：Int～、Long～,Double～
@@ -163,19 +165,19 @@ IntStream stream = IntStream.of(1,2,3);
       - IntToLong～、IntToDouble～
       - LongToInt～、LongToDouble～
       - DoubleToInt～、DoubleToLong～
-- BiFunction<T,U,R>
+- BiFunction\<T,U,R>
   - 「R apply(T t,U u)」
   - 特殊：ToIntBi～、ToLongBi～,ToDoubleBi～
-- UnaryOperator<T>
+- UnaryOperator\<T>
   - 「T apply(T t)」
   - 主なメソッド：iterator
   - 特殊：Int、Long、Double
-- BinaryOperator<T> 
-  - 「T apply(T t1,T t2」
+- BinaryOperator\<T> 
+  - 「T apply(T t1,T t2)」
   - 主なメソッド：reduce
   - 特殊：Int～、Long～、Double～
 
-### Supplier<T>
+### Supplier\<T>
 
 ---
 供給者：何もないところからオブジェクトを生み出す「T get()」
@@ -186,22 +188,17 @@ Stream<Double> stream01 = Stream.generate(()-> Math.random()).limit(10);
 Stream<Double> stream02 = Stream.generate(Math::random).limit(10);
 ```
 
-### Consumer<T>
-
----
+### Consumer\<T>
 
 消費者：戻り値なし「void accept(T t)」
 
-
-### Predicate<T>
-
----
+### Predicate\<T>
 
 評価：「boolean test(T t)」
 
 ```java
-List<String>list = Arrays.asList("ABC","DE","FGHI");
-Predicate<String> p = s -> s.length >= 3;
+List\<String>list = Arrays.asList("ABC","DE","FGHI");
+Predicate\<String> p = s -> s.length >= 3;
 
 boolean all = list.stream().allMatch(p);
 boolean any = list.stream().anyMatch(p);
@@ -227,9 +224,7 @@ TとU型の引数を受け取り、R型として返す
 
 ### UnaryOperator<T>
 
----
-
-「T apply(T t」
+「T apply(T t)」
 
 ```java
 Stream.iterate(1, x -> x * 10).limit(5).forEach(System.out::println);
@@ -237,7 +232,6 @@ Stream.iterate(1, x -> x * 10).limit(5).forEach(System.out::println);
 
 iterateメソッドは2つの引数を取り、第一引数は初期値、第二引数は値に対する演算。
 よって「無限順次ストリーム」となるので「limit」メソッドが必要
-
 
 ### BinaryOperator<T>
 
