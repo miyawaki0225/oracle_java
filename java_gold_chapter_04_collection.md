@@ -158,8 +158,55 @@ Collections.sort(list,Comparator.naturalOrder());
 list.forEach(i->System.out.printf("%d ", i));
 ```
 
+Comparatorの場合
+```java
+class Hero {
+	private int id;
+
+	Hero(int n) {
+		this.id = n;
+	}
+
+	public int getId() {
+		return this.id;
+	}
+}
+
+class HeroComparator implements Comparator<Hero> {
+	@Override
+	public int compare(Hero h1, Hero h2) {
+		// TODO 自動生成されたメソッド・スタブ
+		return h1.getId() - h2.getId();
+	}
+
+}
+```
+
+Comparableの場合
+```Java
+class Hero implements Comparable<Hero> {
+	private int id;
+
+	Hero(int n) {
+		this.id = n;
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	@Override
+	public int compareTo(Hero h) {
+		// TODO 自動生成されたメソッド・スタブ
+		return this.id - h.id;
+	}
+}
+```
+
+
 Collectionsクラス
 - Collectionsクラス
+
 |戻り値|メソッド|説明|
 |---|---|---|
 |void|sort(List\<T>list)|指定されたリストを昇順にソート|
@@ -167,6 +214,7 @@ Collectionsクラス
 |void|reverse(List\<?>list|指定されたリストの要素の順序を逆にする|
 
 - Arraysクラス
+
 |戻り値|メソッド|説明|
 |---|---|---|
 |List\<T>|asList(T...a)|※要素の追加や削除は不可。上書きは可能|
