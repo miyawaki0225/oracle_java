@@ -9,7 +9,7 @@
 |@FunctionalInterface|関数型インターフェースであることを示す|
 |@Deprecated|非推奨の要素であることを示す|
 |@SuppressWarnings|コンパイラの警告を無効にする|
-|@SafeVarargs|安全でない可変長引数に対する警告を無効にする|
+|@SafeVarargs|安全でない可変長引数に対する警告を無効にする。final,static,privateのいずれかのメソッド|
 
 
 ### @FunctionalInterface
@@ -89,7 +89,7 @@ ElementTypeの列挙型の定数
 |アノテーション|説明|
 |---|---|
 |@Documented|Javadoc APIドキュメントの出力にも反映するようになる|
-|@Target|アノテーションを付与する要素を限定する|
+|@Target|アノテーションを付与する要素を限定する（TYPE,FIELD,METHOD,PARAMETER）|
 |@Retention|アノテーションをソースコードもしくはクラスファイルまで保持するかなどを制御する|
 |@Inherited|サブクラスにアノテーションを引き継ぐことを示す|
 |@Repeatable|同じ場所に複数回適用する|
