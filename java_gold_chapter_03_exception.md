@@ -49,6 +49,8 @@
 |java.lang.AutoCloseable|void close() throws Exception|このリソースを閉じ、ベースとなるリソースをすべて開放する|
 |java.io.Closeable|void close() throws IOException|このストリームを閉じて、それに関連するすべてのシステムリソースを開放する|
 
+- 抑制された例外を含むすべての例外を受け取る場合、ThrowableクラスのgetSuppressed()メソッドを使用する
+
 
 #### 例外処理の順番
 読み込み >> close >> finally
